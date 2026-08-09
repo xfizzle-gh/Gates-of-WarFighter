@@ -1,0 +1,57 @@
+# Operating systems
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python tooling
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Local environments and secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Build and generated output
+build/
+dist/
+out/
+staging/
+generated/
+*.tmp
+*.temp
+
+# Local source snapshots and permission evidence
+local_sources/
+source_private/
+docs/permission-evidence/private/
+
+# Gates of Hell runtime artifacts
+*.log
+logs/
+saves/
+profiles/
+crashdumps/
+
+# Archives and large source dumps
+*.7z
+*.rar
+*.zip
+*.tar
+*.tar.gz
+
+# Keep intentionally committed placeholders
+!.gitkeep
