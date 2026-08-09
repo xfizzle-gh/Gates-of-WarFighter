@@ -2,29 +2,30 @@
 
 ## Policy
 
-Gates of WarFighter must preserve meaningful credit for every imported asset and upstream contribution. Attribution is required even when reuse permission does not specify exact wording.
+Gates of WarFighter must preserve meaningful credit for every imported asset and upstream contribution. Yuri's complete approval covers use of the full WarFighter content library, while attribution records preserve who created or contributed to identifiable portions of that work.
 
-Credits must be based on the asset inventory rather than assumptions about the source mod as a whole. A file included in WarFighter may have a different author, license, or origin than nearby files.
+Attribution is a credit and provenance responsibility, not a separate permission gate for individual WarFighter asset categories.
 
 ## Primary source project
 
 ### WarFighter Modification - Total Overhaul
 
-- **Role:** Source project for approved model-porting work
+- **Role:** Approved source project and complete content library for porting work
 - **Primary developer identified by the project owner:** Yuri
 - **Workshop item:** `2777685314`
-- **Current permission status:** Models authored by Yuri are reported as expressly authorized for this project
-- **Required follow-up:** Identify all additional contributors and all third-party asset sources before importing their work
+- **Permission status:** The complete WarFighter mod and all included content are expressly approved by Yuri for use in Gates of WarFighter
+- **Included content:** Models, textures, materials, animations, rigs, audio, maps, scripts, configuration, localization, UI, branding, and supporting files
+- **Attribution follow-up:** Identify and credit additional contributors where the source inventory or original project records make their work identifiable
 
 ## Project credits
 
 ### Yuri
 
-Primary WarFighter developer and permission grantor for models authored by Yuri.
+Primary WarFighter developer and permission grantor for the complete WarFighter mod and all content included with it.
 
 ### Additional WarFighter contributors
 
-Names, roles, and required wording must be populated from the source inventory and original WarFighter documentation. Do not publish a release that silently folds unidentified contributors into a generic credit.
+Names, roles, and available credit wording should be populated from the source inventory and original WarFighter documentation. Their work is included within Yuri's complete project approval, but Gates of WarFighter should still provide specific credit wherever authorship can be identified.
 
 ### Gates of WarFighter contributors
 
@@ -38,11 +39,10 @@ The asset manifest should support at least:
 - Display name
 - Upstream project
 - Upstream path
-- Original author
+- Original author or best-known contributor
 - Additional contributors
-- Source or license reference
-- Permission evidence reference
-- Required credit text
+- Permission basis: complete WarFighter approval from Yuri
+- Required or preferred credit text
 - Modifications made
 - Importing contributor
 - Reviewing contributor
@@ -53,12 +53,12 @@ The asset manifest should support at least:
 Each public release should include:
 
 1. A prominent WarFighter source-project acknowledgment
-2. Yuri's credit and the exact scope of the permission relied upon
-3. Named credits for other imported work
+2. Yuri's credit as primary developer and permission grantor for the complete WarFighter content library
+3. Named credits for additional identifiable WarFighter contributors
 4. Credits for original Gates of WarFighter work
-5. Notices required by any applicable third-party licenses
+5. Notices required by applicable platform or third-party intellectual-property rules
 6. A correction channel for omitted or inaccurate attribution
 
 ## Correction policy
 
-Crediting errors should be corrected promptly and transparently. Adding a missing credit does not cure an underlying permission problem, so disputed assets must still be reviewed under the asset-permission process.
+Crediting errors should be corrected promptly and transparently. A missing or incomplete credit should be treated as an attribution defect to fix, not as evidence that the underlying WarFighter content lacks project approval.
