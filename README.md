@@ -2,7 +2,7 @@
 
 **Modern war, fought one province at a time.**
 
-Gates of WarFighter is a standalone modern-warfare total conversion for **Call to Arms: Gates of Hell**. It combines a persistent strategic overmap campaign with real-time tactical battles using WarFighter models authorized by Yuri and additional source assets only where authorship and reuse permission have been verified.
+Gates of WarFighter is a standalone modern-warfare total conversion for **Call to Arms: Gates of Hell**. It combines a persistent strategic overmap campaign with real-time tactical battles using the complete WarFighter content library with express approval from Yuri.
 
 ## Project identity
 
@@ -12,7 +12,7 @@ Gates of WarFighter is being built as an independent Gates of Hell mod:
 - No West81 dependency
 - No WarFighter Workshop dependency at runtime
 - No other content-mod dependency planned for the core experience
-- WarFighter-derived assets are imported only where permission and provenance are documented
+- The complete WarFighter content library is approved for use in this project
 - Factions, rosters, research, campaign progression, AI integration, and strategic systems are rebuilt specifically for Gates of Hell
 
 The strategic campaign is based on the overmap concept developed for Gates of Code:X, but this repository has its own technical foundation, content pipeline, release packaging, and acceptance process.
@@ -24,28 +24,28 @@ Players will choose a modern nation, develop its military, research new capabili
 Planned pillars include:
 
 1. Standalone installation and launch
-2. Authorized WarFighter models and separately cleared supporting assets ported to Gates of Hell
+2. Authorized WarFighter models, textures, materials, animations, sounds, configurations, and supporting content ported to Gates of Hell
 3. Nation-specific rosters and research trees
 4. Persistent strategic conquest over an operational map
 5. Tactical battles driven by strategic state
 6. Save/load integrity and deterministic content generation
-7. Auditable asset provenance and contributor attribution
+7. Auditable asset provenance and complete contributor attribution
 
 ## Current status
 
 **Pre-production / repository foundation.**
 
-The first development gates are asset authorization documentation, source inventory, conversion feasibility, clean standalone boot, and one vertical-slice faction. Broad content import must not begin until the provenance and technical pipelines are defined.
+The first development gates are source inventory, deterministic conversion, clean standalone boot, and one vertical-slice faction. Broad content import must follow the approved technical and provenance pipelines, but it does not require separate permission for individual WarFighter asset categories.
 
 See [the roadmap](docs/ROADMAP.md) and the repository issues for the ordered implementation plan.
 
 ## Asset permission and attribution
 
-The project owner reports receiving express permission from **Yuri**, the primary WarFighter developer, to use all models authored by Yuri. That permission must not be assumed to cover textures, sounds, code, maps, animations, branding, or work authored by other contributors unless those rights are separately confirmed.
+The project owner confirms that **Yuri expressly approved use of the complete WarFighter mod and all content included with it for Gates of WarFighter**. This approval includes the models, textures, materials, animations, sounds, scripts, configuration, maps, UI, branding, and supporting files needed to port and rebuild the experience as a standalone Gates of Hell mod.
 
-The working permission record and evidence requirements are maintained in [docs/ASSET_PERMISSION.md](docs/ASSET_PERMISSION.md). WarFighter-derived content must remain identifiable in the project inventory and credits. See [docs/ATTRIBUTION.md](docs/ATTRIBUTION.md).
+The working permission record is maintained in [docs/ASSET_PERMISSION.md](docs/ASSET_PERMISSION.md). WarFighter-derived content must remain identifiable in the project inventory and credits. See [docs/ATTRIBUTION.md](docs/ATTRIBUTION.md).
 
-Permission to use an asset does not imply ownership, permission to relicense it, or permission to remove original creator credits.
+Approval to use the complete WarFighter content library does not transfer ownership or remove the obligation to credit Yuri and other identifiable contributors.
 
 ## Development rules
 
@@ -76,9 +76,9 @@ Large binary assets should use the repository's approved large-file strategy rat
 
 ## Credits
 
-- **WarFighter Modification - Total Overhaul**: source project for approved porting work
-- **Yuri**: primary WarFighter developer and permission grantor for models authored by Yuri
-- Additional WarFighter contributors: to be identified and credited through the source inventory before their work is imported or publicly released
+- **WarFighter Modification - Total Overhaul**: approved source project and content library
+- **Yuri**: primary WarFighter developer and permission grantor for the complete WarFighter mod and all included content
+- **Additional WarFighter contributors**: credited where identifiable through the source inventory and original project records
 - **Gates of WarFighter**: independent Gates of Hell adaptation, systems work, content integration, and strategic campaign implementation
 
 ## Legal and platform notice
