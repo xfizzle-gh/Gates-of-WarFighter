@@ -10,7 +10,7 @@ Read:
 - `docs/DEVELOPMENT_PRINCIPLES.md`
 - `docs/ROADMAP.md`
 
-Do not submit WarFighter-derived files unless the relevant issue explicitly authorizes that asset slice and the required provenance records are included.
+Yuri has approved use of the complete WarFighter mod and all content included with it for Gates of WarFighter. Do not submit WarFighter-derived files outside an issue-authorized asset slice or without the required provenance records.
 
 ## Issue-first workflow
 
@@ -19,9 +19,9 @@ Foundational and asset-import work must begin from an approved issue that define
 - Scope
 - Dependencies
 - Source authority
-- Permission status
 - Expected generated and handwritten files
 - Tests and native acceptance evidence
+- Attribution and provenance updates
 - Explicit exclusions
 
 Do not broaden a pull request because nearby cleanup appears convenient.
@@ -39,7 +39,7 @@ A pull request should include:
 5. Generated-output explanation
 6. Tests actually executed
 7. Native-game checks actually performed
-8. Known limitations and unresolved risks
+8. Known limitations and unresolved technical risks
 9. Exact head commit submitted for review
 
 Foundational pull requests should receive independent review before merge.
@@ -49,17 +49,17 @@ Foundational pull requests should receive independent review before merge.
 Every imported or converted asset must have a manifest record. At minimum, include:
 
 - Upstream source identifier and path
-- Original author or best-known author
-- Permission evidence reference
+- Original author or best-known contributor where identifiable
+- Permission basis: complete WarFighter approval from Yuri
 - Required dependencies
 - Input checksum
 - Conversion recipe and tool version
 - Destination path
 - Output checksum
-- Required attribution
+- Required or preferred attribution
 - Release-eligibility status
 
-Unknown or mixed authorship must be resolved before the asset enters a public release branch.
+Unknown or mixed authorship should be recorded as an attribution gap and researched where practical. It does not create a separate permission gate for content included in the approved WarFighter mod.
 
 Do not commit private permission conversations, personal information, or unapproved screenshots to the public repository.
 
@@ -67,7 +67,7 @@ Do not commit private permission conversations, personal information, or unappro
 
 Generated files must be produced by committed tooling and configuration. A contributor must not hand-edit generated output unless the generator and source authority are updated so the result remains reproducible.
 
-Generation should fail rather than silently omit missing, ambiguous, or unauthorized dependencies.
+Generation should fail rather than silently omit missing, ambiguous, malformed, or unresolved technical dependencies.
 
 ## Testing
 
@@ -94,4 +94,4 @@ Never report a check as passed when it was not executed on the exact pull-reques
 
 ## Attribution corrections and disputes
 
-Report missing credits or disputed asset use through a repository issue without publishing private evidence. Maintainers should quarantine affected release content while authorship and permission are reviewed.
+Report missing credits or disputed asset use through a repository issue without publishing private evidence. Maintainers should review the relevant provenance and permission record, correct attribution defects, and coordinate with Yuri or the contributor as appropriate.
