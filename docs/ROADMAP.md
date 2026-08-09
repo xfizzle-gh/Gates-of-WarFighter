@@ -1,15 +1,15 @@
 # Gates of WarFighter Roadmap
 
-This roadmap is gate-based. Later phases may be researched in parallel, but implementation must not depend on an unaccepted earlier gate.
+This roadmap is gate-based. Later phases may be researched in parallel, but implementation must not depend on an unaccepted earlier technical gate.
 
-## Gate 0: Repository and rights foundation
+## Gate 0: Repository and approval foundation
 
-**Goal:** Establish the rules under which the project can safely receive source assets and code.
+**Goal:** Establish the rules under which the project receives, converts, credits, and publishes the fully approved WarFighter content library.
 
 Deliverables:
 
 - Project README and identity
-- Asset-permission record
+- Complete WarFighter permission record
 - Attribution policy
 - Development and contribution rules
 - Repository storage decision for large binaries
@@ -18,33 +18,35 @@ Deliverables:
 
 Acceptance:
 
-- No project document overstates the permission granted
-- Unverified textures and third-party assets are explicitly blocked
+- Repository documents accurately state that Yuri approved the complete WarFighter mod and all included content
+- No asset category is incorrectly described as awaiting separate permission
+- Provenance and contributor-credit requirements remain explicit
 - The repository has an ordered execution plan
 
 ## Gate 1: WarFighter source inventory
 
-**Goal:** Determine exactly what exists, who authored it, what each asset depends on, and what can be considered for import.
+**Goal:** Determine exactly what exists, how it is organized, what each asset depends on, and which nations and equipment families are technically complete.
 
 Deliverables:
 
 - Immutable source snapshot identifier
 - Machine-readable file inventory with hashes
 - Model, texture, material, animation, sound, script, and configuration classification
-- Authorship and permission status per asset family
+- Best-known authorship and contributor attribution per asset family
 - Dependency graph for models and supporting files
-- Quarantine list for unknown or disputed sources
+- Duplicate, orphan, missing, and conflicting-file reports
 - Candidate nation and equipment inventory
 
 Acceptance:
 
 - Inventory can be reproduced from the same source snapshot
 - Every candidate model is linked to its required textures, materials, animations, and configuration
-- No unverified asset is marked release-eligible
+- Unknown authorship is tracked as an attribution gap, not treated as missing project permission
+- Technically incomplete or missing dependencies remain visible blockers
 
 ## Gate 2: Conversion and validation pipeline
 
-**Goal:** Build a deterministic, auditable path from authorized source files to Gates of Hell-ready output.
+**Goal:** Build a deterministic, auditable path from approved WarFighter source files to Gates of Hell-ready output.
 
 Deliverables:
 
@@ -60,7 +62,7 @@ Deliverables:
 Acceptance:
 
 - Repeated conversion of identical inputs produces equivalent output
-- Missing or unauthorized dependencies fail closed
+- Missing, malformed, or unresolved technical dependencies fail closed
 - Generated files can be traced to exact source inputs and tool versions
 
 ## Gate 3: Standalone Gates of Hell shell
@@ -72,7 +74,7 @@ Deliverables:
 - Native mod metadata and folder structure
 - Minimal menu and localization integration
 - Clean boot with only Gates of WarFighter enabled
-- One original or fully cleared test asset loaded through the new pipeline
+- One WarFighter test asset loaded through the new pipeline
 - Packaging and installation checks
 - Baseline log scanner
 
@@ -132,14 +134,15 @@ Acceptance:
 
 For each faction:
 
-- Source and permission inventory complete
+- Source inventory and dependencies complete
 - Canonical unit and equipment mapping
 - Roster and research authored through the approved source format
 - Recruitment, AI, repair, economy, reinforcement, and tactical spawn verified
 - Cross-faction leakage tests
 - Native-game acceptance evidence
+- Attribution records updated for identifiable upstream contributors
 
-Expansion order should be chosen after Gate 1 identifies the best-supported WarFighter nations. Do not promise a nation until its required asset set is both technically complete and cleared for use.
+Expansion order should be chosen after Gate 1 identifies the technically best-supported WarFighter nations. Permission is already established for the complete WarFighter content library.
 
 ## Gate 7: Campaign depth and presentation
 
@@ -166,7 +169,7 @@ Deliverables:
 - Full clean-install matrix
 - Supported game-version declaration
 - Complete asset and contributor credits
-- Permission and license review
+- Confirmed project-level WarFighter permission record
 - Save migration and compatibility policy
 - Performance and package-size review
 - Workshop description and installation instructions
@@ -176,7 +179,7 @@ Deliverables:
 Acceptance:
 
 - No runtime dependency on another content mod
-- All shipped assets are manifest-backed and release-eligible
+- All shipped assets are manifest-backed and traceable to the approved WarFighter source snapshot or original Gates of WarFighter work
 - Native campaign smoke matrix passes
 - Credits and notices are complete
 - Release artifact matches the reviewed source and generated manifest
