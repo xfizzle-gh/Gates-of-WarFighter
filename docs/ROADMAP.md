@@ -11,26 +11,32 @@ It is not the strategic campaign repository and is not intended to become a sepa
 Deliverables:
 
 - complete WarFighter permission record
-- current v2.10.04 / legacy v2.05 source comparison
-- canonical source policy
+- complete v2.05 baseline inventory
+- current v2.10.04 delta/package inventory
+- source-completeness decision
 - attribution policy
 - large-binary storage decision
 - per-asset manifest schema
 
 Current source policy:
 
-- current `E:\steam\steamapps\workshop\content\400750\CTA Warfighter Drop Folder\2777685314` metadata identifies **WarFighter v2.10.04** and is the canonical current upstream source
-- legacy `E:\warfighter_v2_05` metadata identifies **WarFighter v2.05** and is retained as an unpacked comparison/reference source
-- `E:\steam\steamapps\workshop\content\400750\2950056378` identifies itself as **Rifleman Mod**, not WarFighter, and is excluded from WarFighter source precedence
-- v2.10.04 is heavily `.pak`-packed, so archive members must be inventoried before comparing content counts
-- no blind current/legacy folder merge
+- `E:\warfighter_v2_05` identifies **WarFighter v2.05** and remains the **canonical complete working baseline**
+- `E:\steam\steamapps\workshop\content\400750\CTA Warfighter Drop Folder\2777685314` identifies **WarFighter v2.10.04**, but the inspected local drop is **incomplete** and is treated as a newer delta/reference source until a complete current snapshot is acquired
+- the inspected v2.10.04 `.pak` set contains 18 archives, 66,135 members, 64,893 unique normalized paths, 43 duplicate normalized paths, and zero archive-read failures
+- compared with v2.05, the partial current drop has 9,029 current-only paths and 81,382 v2.05-only paths, with 55,864 common paths
+- the partial current drop contains no breed `.set` tree, no sound tree, only a subset of humanskins, and no full USA/USMC/Germany/UAF/PLA/IDF vehicle entity families
+- it does contain valuable current deltas, including French vehicle entities, additional RUS/GRM/REB content, newer inventory/ammunition assets, and thousands of current-only textures
+- `E:\steam\steamapps\workshop\content\400750\2950056378` identifies itself as **Rifleman Mod**, not WarFighter, and is excluded from WarFighter source selection
+- no blind baseline/current folder merge
+- absence from the incomplete v2.10.04 drop must not be interpreted as an upstream deletion
 
 Acceptance:
 
-- each confirmed WarFighter source snapshot can be identified reproducibly
-- v2.10.04 archive members are inventoried rather than treated as opaque single files
+- each source snapshot can be identified reproducibly
+- current `.pak` archive members are inventoried rather than treated as opaque single files
+- the remaining `2777685314.rar` and any complete current distribution are inventoried before declaring v2.10.04 a replacement baseline
 - asset provenance is traceable to exact archive/member or legacy path
-- current/legacy differences remain explicit
+- current/baseline differences remain explicit
 
 ## Gate 1: Import and dependency tooling
 
@@ -48,8 +54,9 @@ Deliverables:
 
 Acceptance:
 
-- a selected v2.10.04 asset can be staged without copying unrelated faction content
-- any v2.05 fallback is explicit and reviewed
+- a selected asset can be staged without copying unrelated faction content
+- the tool can mix a complete v2.05 dependency with a newer v2.10.04 component only when that source choice is explicit
+- current-version files are never preferred merely because their version number is higher when required dependencies are absent from the local current drop
 - missing dependencies fail visibly
 - repeated staging of the same source produces the same manifest
 
@@ -77,7 +84,9 @@ Acceptance:
 
 ## Gate 3: First human breed vertical slice
 
-**Goal:** prove the full WarFighter-to-Gates-of-Hell human pipeline with exactly one infantry breed from the current v2.10.04 source.
+**Goal:** prove the full WarFighter-to-Gates-of-Hell human pipeline with exactly one dependency-complete infantry breed.
+
+Until a complete current v2.10.04 breed/configuration tree is acquired, the first breed may use the complete v2.05 source as its definition baseline while incorporating any individually verified newer v2.10.04 humanskin, texture, equipment, or entity components.
 
 Required proof:
 
@@ -95,7 +104,8 @@ Acceptance:
 
 - exact asset revision is marked `LAB ACCEPTED`
 - dependency manifest and evidence are complete
-- source manifest names the v2.10.04 archive/member paths and any approved v2.05 fallback
+- source manifest names every v2.05 path and v2.10.04 archive/member used
+- no dependency is silently assumed to exist in the incomplete current drop
 - handoff package is ready for a separate Gates of Code:4X integration PR
 
 ## Gate 4: Repeatable one-asset intake
@@ -155,8 +165,8 @@ Maintain:
 
 - accepted-asset registry
 - superseded/replaced revision history
-- current v2.10.04 source package/member per component
-- explicit v2.05 fallback records when used
+- complete baseline/current-delta source choices per component
+- current-package completeness status
 - editor regression checks for previously accepted assets when tooling changes
 - downstream integration references
 
