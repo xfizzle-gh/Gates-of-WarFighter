@@ -24,7 +24,7 @@ The current GitHub repository for that work is `xfizzle-gh/Gates-of-Code-X`. The
 The WarFighter asset laboratory.
 
 - Inventory the approved WarFighter source libraries
-- Reconcile the broad V1 source with useful V2 deltas
+- Treat WarFighter **v2.10.04** as the current upstream source and v2.05 as an unpacked legacy/reference source
 - Import one model, texture set, weapon, vehicle, or human asset at a time
 - Recreate or adapt Gates of Hell entities and breeds as required
 - Resolve material, texture, animation, skeleton, inventory, weapon, and sound dependencies
@@ -37,27 +37,35 @@ This repository should **not** contain copied Code:X assets. Code:X is a downstr
 
 ## Source strategy
 
-Two WarFighter source trees have been compared:
+The source lineage has been corrected from direct metadata inspection:
 
-- **V1:** `E:\warfighter_v2_05`
-- **V2:** `E:\steam\steamapps\workshop\content\400750\2950056378`
+- **Current WarFighter:** `E:\steam\steamapps\workshop\content\400750\CTA Warfighter Drop Folder`
+  - nested `2777685314/mod.info` identifies **WarFighter v2.10.04**
+  - current content is heavily packaged into Gates of Hell `.pak` archives
+- **Legacy WarFighter reference:** `E:\warfighter_v2_05`
+  - `mod.info` identifies **WarFighter v2.05**
+  - useful because much of the content is already unpacked for direct inspection
+- **Not WarFighter:** `E:\steam\steamapps\workshop\content\400750\2950056378`
+  - its `mod.info` identifies **Rifleman Mod**
+  - it is excluded from WarFighter source precedence
 
 The current source policy is:
 
-- **V1 is the canonical breadth baseline.** It contains substantially more total content, including complete asset families absent from V2.
-- **V2 is a reconciliation/update source.** It contains newer or divergent definitions, additional weapon/vehicle material, and a larger texture payload in several areas.
+- **v2.10.04 is the canonical current upstream source.**
+- **v2.05 is a legacy unpacked comparison/reference source.**
+- Do not compare raw visible file counts between them because v2.10.04 is heavily packed.
 - Do not perform a blind folder merge.
-- Every imported asset records which source revision supplied each component.
+- Every imported asset records the exact source revision, archive/member path, and any approved legacy fallback.
 
-See issue #3 for the source comparison evidence.
+See issue #3 for the source comparison and archive-inventory work.
 
 ## One-asset workflow
 
 Every WarFighter addition follows the same lifecycle:
 
 1. Select exactly one bounded asset or breed slice.
-2. Identify its full dependency closure in V1 and V2.
-3. Choose the canonical source for each required component.
+2. Identify its full dependency closure in current v2.10.04 and its v2.05 legacy counterpart where applicable.
+3. Prefer the current v2.10.04 component unless a reviewed issue explicitly approves a legacy fallback.
 4. Copy only that approved slice into an isolated staging area.
 5. Adapt paths, materials, definitions, skeletons, inventories, and configuration for Gates of Hell.
 6. Create or repair the Gates of Hell entity and breed definitions required by the asset.
@@ -97,7 +105,7 @@ This WarFighter approval does not grant permission to copy or redistribute Code:
 - One bounded asset slice per implementation PR
 - No mass WarFighter dump into `main`
 - No copied Code:X assets in this repository
-- V1/V2 source choice must be explicit
+- Current/legacy source choice must be explicit
 - Every asset must have a dependency manifest
 - Every breed/entity must be tested in editor before downstream handoff
 - Native testing is required when editor inspection cannot prove behavior
