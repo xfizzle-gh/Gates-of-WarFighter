@@ -1,185 +1,157 @@
-# Gates of WarFighter Roadmap
+# Gates of WarFighter Asset Lab Roadmap
 
-This roadmap is gate-based. Later phases may be researched in parallel, but implementation must not depend on an unaccepted earlier technical gate.
+This repository is an import, reconstruction, and validation laboratory for WarFighter assets that may later be integrated into Gates of Code:4X.
 
-## Gate 0: Repository and approval foundation
+It is not the strategic campaign repository and is not intended to become a separate standalone total conversion.
 
-**Goal:** Establish the rules under which the project receives, converts, credits, and publishes the fully approved WarFighter content library.
+## Gate 0: Source and provenance foundation
 
-Deliverables:
-
-- Project README and identity
-- Complete WarFighter permission record
-- Attribution policy
-- Development and contribution rules
-- Repository storage decision for large binaries
-- Initial issue and pull-request conventions
-- Preserved permission evidence outside public history, with an approved repository copy where appropriate
-
-Acceptance:
-
-- Repository documents accurately state that Yuri approved the complete WarFighter mod and all included content
-- No asset category is incorrectly described as awaiting separate permission
-- Provenance and contributor-credit requirements remain explicit
-- The repository has an ordered execution plan
-
-## Gate 1: WarFighter source inventory
-
-**Goal:** Determine exactly what exists, how it is organized, what each asset depends on, and which nations and equipment families are technically complete.
+**Goal:** establish the approved WarFighter source authority and a reproducible way to identify every imported file.
 
 Deliverables:
 
-- Immutable source snapshot identifier
-- Machine-readable file inventory with hashes
-- Model, texture, material, animation, sound, script, and configuration classification
-- Best-known authorship and contributor attribution per asset family
-- Dependency graph for models and supporting files
-- Duplicate, orphan, missing, and conflicting-file reports
-- Candidate nation and equipment inventory
+- complete WarFighter permission record
+- V1/V2 source comparison
+- canonical source policy
+- attribution policy
+- large-binary storage decision
+- per-asset manifest schema
+
+Current source policy:
+
+- V1 (`E:\warfighter_v2_05`) is the breadth baseline
+- V2 (`E:\steam\steamapps\workshop\content\400750\2950056378`) is a reconciliation/update source
+- no blind V1/V2 folder merge
 
 Acceptance:
 
-- Inventory can be reproduced from the same source snapshot
-- Every candidate model is linked to its required textures, materials, animations, and configuration
-- Unknown authorship is tracked as an attribution gap, not treated as missing project permission
-- Technically incomplete or missing dependencies remain visible blockers
+- each source snapshot can be identified reproducibly
+- asset provenance is traceable
+- V1/V2 differences remain explicit
 
-## Gate 2: Conversion and validation pipeline
+## Gate 1: Import and dependency tooling
 
-**Goal:** Build a deterministic, auditable path from approved WarFighter source files to Gates of Hell-ready output.
+**Goal:** build a repeatable path for selecting one WarFighter asset and collecting its complete dependency closure.
 
 Deliverables:
 
-- Import manifest schema
-- Conversion toolchain and pinned environment
-- Path and naming normalization
-- Material and texture mapping rules
-- Model validation and dependency checks
-- Collision, skeleton, animation, and LOD handling policy
-- Generated-output provenance and checksums
-- Failure-atomic publication into a staging directory
+- inventory/query tooling
+- dependency-closure extraction
+- path collision detection
+- input hashing
+- staging manifest
+- output hashing
+- conversion recipe records
 
 Acceptance:
 
-- Repeated conversion of identical inputs produces equivalent output
-- Missing, malformed, or unresolved technical dependencies fail closed
-- Generated files can be traced to exact source inputs and tool versions
+- a selected asset can be staged without copying unrelated faction content
+- missing dependencies fail visibly
+- repeated staging of the same source produces the same manifest
 
-## Gate 3: Standalone Gates of Hell shell
+## Gate 2: Gates of Hell editor test harness
 
-**Goal:** Prove that the project can load without another content mod.
+**Goal:** create a minimal lab environment for loading and inspecting imported WarFighter content in the Gates of Hell editor.
 
 Deliverables:
 
-- Native mod metadata and folder structure
-- Minimal menu and localization integration
-- Clean boot with only Gates of WarFighter enabled
-- One WarFighter test asset loaded through the new pipeline
-- Packaging and installation checks
-- Baseline log scanner
+- lab mod metadata and folder structure
+- editor-visible test organization
+- human/breed test area
+- weapon test area
+- vehicle test area
+- baseline log collection
+- screenshots/evidence convention
+
+The lab must not copy Code:X assets. Code:X remains external and belongs to the downstream Code:4X project.
 
 Acceptance:
 
-- Clean installation launches with no Code:X, West81, or WarFighter dependency
-- No unresolved asset paths point into another Workshop item
-- Candidate build can be packaged and reinstalled reproducibly
+- an imported asset can be located and loaded predictably in editor
+- editor failures are attributable to the selected asset slice rather than unrelated content
+- logs and evidence can be attached to the asset issue
 
-## Gate 4: Single-faction vertical slice
+## Gate 3: First human breed vertical slice
 
-**Goal:** Prove the complete tactical and strategic content path for one nation before broad expansion.
+**Goal:** prove the full WarFighter-to-Gates-of-Hell human pipeline with exactly one infantry breed.
 
-Deliverables:
+Required proof:
 
-- One faction identity and side mapping
-- Initial infantry, specialist, vehicle, and support roster
-- Research tree
-- Recruitment and economy integration
-- Tactical spawning and reinforcement integration
-- AI availability
-- Battle-result return to strategic state
-- Save/load support
-- Native acceptance checklist and evidence
-
-Acceptance:
-
-- Correct roster and research with no foreign-faction leakage
-- Units can be purchased, deployed, spawned, and resolved
-- Save/load preserves faction and campaign state
-- Game log is clean of blocking errors
-
-## Gate 5: Strategic overmap foundation
-
-**Goal:** Establish the Gates of WarFighter campaign as an independent implementation of the proven overmap concept.
-
-Deliverables:
-
-- Strategic map data contract
-- Provinces, adjacency, ownership, and movement
-- Faction selection and persistence
-- Economy, recruitment, research, and reinforcement contracts
-- Battle generation and result import
-- Fog of war and observer-safe presentation
-- Deterministic save schema and migrations
-- Strategic UI shell
+- model/body/skin load
+- textures and materials resolve
+- equipment attachments align
+- inventory and weapon resolve
+- skeleton/animations bind
+- breed definition is valid
+- editor spawn/inspection passes
+- native movement/combat test passes if required
+- `game.log` has no blocking errors from the slice
 
 Acceptance:
 
-- A campaign can start, progress through multiple battles, save, reload, and continue
-- Tactical results affect only authorized strategic state
-- Hidden information does not leak through player or AI projections
+- exact asset revision is marked `LAB ACCEPTED`
+- dependency manifest and evidence are complete
+- handoff package is ready for a separate Gates of Code:4X integration PR
 
-## Gate 6: Faction expansion
+## Gate 4: Repeatable one-asset intake
 
-**Goal:** Add nations through the accepted compiler and validation path rather than bespoke wiring.
+**Goal:** import WarFighter content incrementally rather than by faction-sized dumps.
 
-For each faction:
+Suggested progression:
 
-- Source inventory and dependencies complete
-- Canonical unit and equipment mapping
-- Roster and research authored through the approved source format
-- Recruitment, AI, repair, economy, reinforcement, and tactical spawn verified
-- Cross-faction leakage tests
-- Native-game acceptance evidence
-- Attribution records updated for identifiable upstream contributors
+1. additional conventional infantry breeds
+2. specialists and crew breeds
+3. individual weapon families
+4. simple unarmed/static equipment
+5. wheeled vehicles
+6. tracked vehicles
+7. turreted/complex vehicles
+8. aircraft and highly coupled assets
 
-Expansion order should be chosen after Gate 1 identifies the technically best-supported WarFighter nations. Permission is already established for the complete WarFighter content library.
+Each slice receives its own issue and PR.
 
-## Gate 7: Campaign depth and presentation
+Acceptance for each asset:
 
-Potential work after the core campaign is stable:
+- dependency closure complete
+- Gates of Hell entity/breed/configuration valid
+- editor pass
+- native pass where required
+- manifest and attribution complete
+- exact accepted revision recorded
 
-- Diplomacy and alliances
-- Regional or formation-specific recruitment
-- Operational conditions and modifiers
-- Province development and infrastructure
-- Commander or formation progression
-- Expanded AI planning
-- Strategic events
-- Improved map presentation and accessibility
-- Campaign configuration presets
+## Gate 5: Code:4X handoff contract
 
-Each feature requires a separate issue, bounded data contract, migration plan, and acceptance test.
+**Goal:** standardize how accepted lab assets move into the Code:X-based campaign project.
 
-## Gate 8: Release hardening
+Each handoff contains:
 
-**Goal:** Produce a distributable public build with complete evidence and credits.
+- accepted asset files
+- canonical suggested ID
+- source nation/equipment identity
+- provenance manifest
+- runtime path requirements
+- editor/native evidence
+- known limitations
+- collision notes against existing Gates of Hell/Code:X content
 
-Deliverables:
-
-- Full clean-install matrix
-- Supported game-version declaration
-- Complete asset and contributor credits
-- Confirmed project-level WarFighter permission record
-- Save migration and compatibility policy
-- Performance and package-size review
-- Workshop description and installation instructions
-- Known-issues register
-- Release rollback plan
+The downstream project decides roster, faction, research, cost, balance, AI use, and campaign availability.
 
 Acceptance:
 
-- No runtime dependency on another content mod
-- All shipped assets are manifest-backed and traceable to the approved WarFighter source snapshot or original Gates of WarFighter work
-- Native campaign smoke matrix passes
-- Credits and notices are complete
-- Release artifact matches the reviewed source and generated manifest
+- lab acceptance and campaign integration remain separate review decisions
+- Code:X files are not copied into this repository
+- downstream integration can identify exactly which lab revision it consumed
+
+## Gate 6: Library growth and maintenance
+
+**Goal:** build a catalog of accepted WarFighter assets that can be consumed by Code:4X over time.
+
+Maintain:
+
+- accepted-asset registry
+- superseded/replaced revision history
+- V1/V2 source choices per component
+- editor regression checks for previously accepted assets when tooling changes
+- downstream integration references
+
+The project should prefer steady, individually proven additions over bulk migration.
