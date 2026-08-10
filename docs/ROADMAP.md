@@ -11,7 +11,7 @@ It is not the strategic campaign repository and is not intended to become a sepa
 Deliverables:
 
 - complete WarFighter permission record
-- V1/V2 source comparison
+- current v2.10.04 / legacy v2.05 source comparison
 - canonical source policy
 - attribution policy
 - large-binary storage decision
@@ -19,15 +19,18 @@ Deliverables:
 
 Current source policy:
 
-- V1 (`E:\warfighter_v2_05`) is the breadth baseline
-- V2 (`E:\steam\steamapps\workshop\content\400750\2950056378`) is a reconciliation/update source
-- no blind V1/V2 folder merge
+- current `E:\steam\steamapps\workshop\content\400750\CTA Warfighter Drop Folder\2777685314` metadata identifies **WarFighter v2.10.04** and is the canonical current upstream source
+- legacy `E:\warfighter_v2_05` metadata identifies **WarFighter v2.05** and is retained as an unpacked comparison/reference source
+- `E:\steam\steamapps\workshop\content\400750\2950056378` identifies itself as **Rifleman Mod**, not WarFighter, and is excluded from WarFighter source precedence
+- v2.10.04 is heavily `.pak`-packed, so archive members must be inventoried before comparing content counts
+- no blind current/legacy folder merge
 
 Acceptance:
 
-- each source snapshot can be identified reproducibly
-- asset provenance is traceable
-- V1/V2 differences remain explicit
+- each confirmed WarFighter source snapshot can be identified reproducibly
+- v2.10.04 archive members are inventoried rather than treated as opaque single files
+- asset provenance is traceable to exact archive/member or legacy path
+- current/legacy differences remain explicit
 
 ## Gate 1: Import and dependency tooling
 
@@ -35,7 +38,7 @@ Acceptance:
 
 Deliverables:
 
-- inventory/query tooling
+- archive/member inventory and query tooling
 - dependency-closure extraction
 - path collision detection
 - input hashing
@@ -45,7 +48,8 @@ Deliverables:
 
 Acceptance:
 
-- a selected asset can be staged without copying unrelated faction content
+- a selected v2.10.04 asset can be staged without copying unrelated faction content
+- any v2.05 fallback is explicit and reviewed
 - missing dependencies fail visibly
 - repeated staging of the same source produces the same manifest
 
@@ -73,7 +77,7 @@ Acceptance:
 
 ## Gate 3: First human breed vertical slice
 
-**Goal:** prove the full WarFighter-to-Gates-of-Hell human pipeline with exactly one infantry breed.
+**Goal:** prove the full WarFighter-to-Gates-of-Hell human pipeline with exactly one infantry breed from the current v2.10.04 source.
 
 Required proof:
 
@@ -91,6 +95,7 @@ Acceptance:
 
 - exact asset revision is marked `LAB ACCEPTED`
 - dependency manifest and evidence are complete
+- source manifest names the v2.10.04 archive/member paths and any approved v2.05 fallback
 - handoff package is ready for a separate Gates of Code:4X integration PR
 
 ## Gate 4: Repeatable one-asset intake
@@ -150,7 +155,8 @@ Maintain:
 
 - accepted-asset registry
 - superseded/replaced revision history
-- V1/V2 source choices per component
+- current v2.10.04 source package/member per component
+- explicit v2.05 fallback records when used
 - editor regression checks for previously accepted assets when tooling changes
 - downstream integration references
 
