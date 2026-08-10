@@ -1,6 +1,8 @@
 # Contributing to Gates of WarFighter
 
-## Before contributing
+## Purpose
+
+This repository is a WarFighter-to-Gates-of-Hell asset lab. Contributions should make one bounded WarFighter asset slice work correctly in Gates of Hell and produce evidence suitable for downstream Gates of Code:4X integration.
 
 Read:
 
@@ -9,89 +11,104 @@ Read:
 - `docs/ATTRIBUTION.md`
 - `docs/DEVELOPMENT_PRINCIPLES.md`
 - `docs/ROADMAP.md`
+- `docs/ASSET_LAB_WORKFLOW.md`
 
-Yuri has approved use of the complete WarFighter mod and all content included with it for Gates of WarFighter. Do not submit WarFighter-derived files outside an issue-authorized asset slice or without the required provenance records.
+## Source boundaries
+
+Yuri approved use of the complete WarFighter mod and all included content.
+
+Code:X is different: do not copy Code:X assets, source files, or binaries into this repository. Code:X remains an external dependency of the downstream Code:4X submod.
 
 ## Issue-first workflow
 
-Foundational and asset-import work must begin from an approved issue that defines:
+Every asset-import PR must have an issue defining:
 
-- Scope
-- Dependencies
-- Source authority
-- Expected generated and handwritten files
-- Tests and native acceptance evidence
-- Attribution and provenance updates
-- Explicit exclusions
+- exact asset/breed/weapon/vehicle slice
+- V1 and V2 source paths
+- selected canonical source per component
+- expected dependency closure
+- Gates of Hell entity/breed/configuration work
+- editor acceptance checks
+- native checks when required
+- expected files and binaries
+- provenance/attribution updates
+- explicit exclusions
 
-Do not broaden a pull request because nearby cleanup appears convenient.
+Do not broaden the PR into neighboring assets or a whole faction.
 
-## Branches and pull requests
+## Pull requests
 
-Use a descriptive branch name, preferably tied to the issue or gate. Open pull requests as drafts unless the issue explicitly permits otherwise.
+Open implementation PRs as drafts until evidence is complete.
 
-A pull request should include:
+A PR must report:
 
-1. The issue and gate it serves
-2. Exact scope and exclusions
-3. Changed-file summary
-4. Source and provenance changes
-5. Generated-output explanation
-6. Tests actually executed
-7. Native-game checks actually performed
-8. Known limitations and unresolved technical risks
-9. Exact head commit submitted for review
+1. issue served
+2. exact asset slice
+3. V1/V2 source decision
+4. complete changed-file list
+5. dependency manifest
+6. conversion/reconstruction work
+7. tests actually executed
+8. Gates of Hell editor checks actually performed
+9. native tests actually performed
+10. screenshots/log evidence
+11. known limitations
+12. exact head commit submitted for acceptance
 
-Foundational pull requests should receive independent review before merge.
+## Asset manifest
 
-## Asset submissions
+Every imported or converted asset must record at least:
 
-Every imported or converted asset must have a manifest record. At minimum, include:
+- stable lab asset ID
+- upstream WarFighter source tree and relative paths
+- V1/V2 source choice per component
+- input hashes
+- dependency list
+- original author or best-known contributor where identifiable
+- permission basis: complete WarFighter approval from Yuri
+- conversion recipe/tool version
+- destination paths
+- output hashes
+- editor status
+- native-test status
+- accepted Git revision
+- downstream Code:4X handoff/integration reference when applicable
 
-- Upstream source identifier and path
-- Original author or best-known contributor where identifiable
-- Permission basis: complete WarFighter approval from Yuri
-- Required dependencies
-- Input checksum
-- Conversion recipe and tool version
-- Destination path
-- Output checksum
-- Required or preferred attribution
-- Release-eligibility status
+## Editor evidence
 
-Unknown or mixed authorship should be recorded as an attribution gap and researched where practical. It does not create a separate permission gate for content included in the approved WarFighter mod.
+A human/breed PR should normally prove:
 
-Do not commit private permission conversations, personal information, or unapproved screenshots to the public repository.
+- model/body/skin load correctly
+- textures/materials resolve
+- equipment and attachments align
+- weapon/inventory resolve
+- skeleton and animations bind
+- breed is selectable/spawnable through the intended editor flow
+- no obvious T-pose, invisible geometry, exploded mesh, missing material, or misplaced equipment
+
+Vehicle and weapon slices require equivalent asset-specific checks.
+
+## Native testing
+
+Run native Gates of Hell tests whenever editor inspection cannot prove runtime behavior. Do not claim a native pass based only on editor loading.
+
+Inspect `game.log` for blocking parse, missing-resource, inheritance, animation, material, sound, or spawn errors attributable to the slice.
 
 ## Generated content
 
-Generated files must be produced by committed tooling and configuration. A contributor must not hand-edit generated output unless the generator and source authority are updated so the result remains reproducible.
-
-Generation should fail rather than silently omit missing, ambiguous, malformed, or unresolved technical dependencies.
-
-## Testing
-
-Use the narrowest useful checks while developing, then execute the issue's full acceptance set before requesting review.
-
-Evidence should distinguish:
-
-- Structural or static validation
-- Conversion validation
-- Automated tests
-- Headless game checks
-- Native Gates of Hell checks
-- Manual visual inspection
-
-Never report a check as passed when it was not executed on the exact pull-request head.
+Generated files must be reproducible from committed tooling/configuration or a precise documented recipe. Do not hand-edit generated output without updating its source authority.
 
 ## Commit hygiene
 
-- Keep commits intentional and reviewable
-- Avoid unrelated formatting or file churn
-- Do not commit local Workshop installations, caches, logs, save files, or private source archives
-- Do not force-push an accepted review head without a documented reason and a fresh review request
-- Do not merge around unresolved blocking findings
+- one bounded asset slice per PR
+- no unrelated cleanup
+- no full Workshop source dumps
+- no copied Code:X content
+- no force-push of an accepted head without fresh review
+- no merge around unresolved blocking editor/native findings
 
-## Attribution corrections and disputes
+## Lab acceptance and downstream integration
 
-Report missing credits or disputed asset use through a repository issue without publishing private evidence. Maintainers should review the relevant provenance and permission record, correct attribution defects, and coordinate with Yuri or the contributor as appropriate.
+A `LAB ACCEPTED` asset is ready for handoff, not automatically part of Gates of Code:4X.
+
+The downstream repository separately decides faction ownership, roster/research placement, costs, balance, AI usage, and campaign integration.
