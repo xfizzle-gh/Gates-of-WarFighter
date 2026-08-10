@@ -2,63 +2,79 @@
 
 ## Policy
 
-Gates of WarFighter must preserve meaningful credit for every imported asset and upstream contribution. Yuri's complete approval covers use of the full WarFighter content library, while attribution records preserve who created or contributed to identifiable portions of that work.
+Gates of WarFighter preserves meaningful credit and provenance for WarFighter assets imported into Gates of Hell.
 
-Attribution is a credit and provenance responsibility, not a separate permission gate for individual WarFighter asset categories.
+Yuri's complete approval covers use of the full WarFighter content library. Attribution records preserve who created or contributed to identifiable portions of that work and how each asset was transformed by the lab.
 
 ## Primary source project
 
 ### WarFighter Modification - Total Overhaul
 
-- **Role:** Approved source project and complete content library for porting work
+- **Role:** approved upstream source project and content library
 - **Primary developer identified by the project owner:** Yuri
 - **Workshop item:** `2777685314`
-- **Permission status:** The complete WarFighter mod and all included content are expressly approved by Yuri for use in Gates of WarFighter
-- **Included content:** Models, textures, materials, animations, rigs, audio, maps, scripts, configuration, localization, UI, branding, and supporting files
-- **Attribution follow-up:** Identify and credit additional contributors where the source inventory or original project records make their work identifiable
+- **Permission status:** complete WarFighter mod and all included content approved by Yuri for project use
+- **Included content:** models, textures, materials, animations, rigs, audio, maps, scripts, configuration, localization, UI, branding, and supporting files
+- **Attribution follow-up:** identify and credit additional contributors where source records make their work identifiable
 
 ## Project credits
 
 ### Yuri
 
-Primary WarFighter developer and permission grantor for the complete WarFighter mod and all content included with it.
+Primary WarFighter developer and permission grantor for the complete WarFighter mod and included content.
 
 ### Additional WarFighter contributors
 
-Names, roles, and available credit wording should be populated from the source inventory and original WarFighter documentation. Their work is included within Yuri's complete project approval, but Gates of WarFighter should still provide specific credit wherever authorship can be identified.
+Names, roles, and available credit wording should be populated from source inventory and original WarFighter documentation wherever practical.
 
 ### Gates of WarFighter contributors
 
-Project-specific engineering, conversion tooling, campaign systems, faction implementation, testing, documentation, and original content should be credited through repository history and release credits.
+Credit project-specific work such as:
+
+- V1/V2 source inventory and reconciliation
+- dependency tooling
+- Gates of Hell conversion work
+- breed/entity reconstruction
+- material/texture/path repair
+- editor validation
+- native test harnesses
+- manifests and documentation
+- downstream handoff preparation
+
+### Code:X / Gates of Code:4X
+
+Code:X is a downstream dependency/content foundation for Gates of Code:4X. Code:X content is not redistributed by this repository. Downstream campaign integration should preserve whatever Code:X attribution and dependency requirements apply there.
 
 ## Per-asset attribution fields
 
 The asset manifest should support at least:
 
-- Stable asset identifier
-- Display name
-- Upstream project
-- Upstream path
-- Original author or best-known contributor
-- Additional contributors
-- Permission basis: complete WarFighter approval from Yuri
-- Required or preferred credit text
-- Modifications made
-- Importing contributor
-- Reviewing contributor
-- Release eligibility
+- stable lab asset identifier
+- display name
+- upstream project
+- V1/V2 source paths
+- original author or best-known contributor
+- additional contributors
+- permission basis: complete WarFighter approval from Yuri
+- required or preferred credit text
+- modifications/conversion performed
+- importing contributor
+- reviewing contributor
+- editor/native acceptance revision
+- downstream Code:4X handoff/integration reference
 
-## Release credit format
+## Release and handoff credit
 
-Each public release should include:
+Every accepted asset handoff should retain:
 
-1. A prominent WarFighter source-project acknowledgment
-2. Yuri's credit as primary developer and permission grantor for the complete WarFighter content library
-3. Named credits for additional identifiable WarFighter contributors
-4. Credits for original Gates of WarFighter work
-5. Notices required by applicable platform or third-party intellectual-property rules
-6. A correction channel for omitted or inaccurate attribution
+1. WarFighter source-project acknowledgment
+2. Yuri credit as primary developer and permission grantor
+3. named credits for additional identifiable WarFighter contributors
+4. credits for Gates of WarFighter conversion/reconstruction work
+5. exact source and accepted lab revision
+
+The downstream Code:4X project may aggregate these records into its own release credits while preserving the underlying attribution.
 
 ## Correction policy
 
-Crediting errors should be corrected promptly and transparently. A missing or incomplete credit should be treated as an attribution defect to fix, not as evidence that the underlying WarFighter content lacks project approval.
+Crediting errors should be corrected promptly and transparently. A missing or incomplete credit is an attribution defect to fix, not evidence that the underlying WarFighter content lacks project approval.
