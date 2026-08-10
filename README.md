@@ -23,8 +23,8 @@ The current GitHub repository for that work is `xfizzle-gh/Gates-of-Code-X`. The
 
 The WarFighter asset laboratory.
 
-- Inventory the approved WarFighter source libraries
-- Treat WarFighter **v2.10.04** as the current upstream source and v2.05 as an unpacked legacy/reference source
+- Inventory approved WarFighter source material
+- Maintain a complete working baseline and separately track newer current-version deltas
 - Import one model, texture set, weapon, vehicle, or human asset at a time
 - Recreate or adapt Gates of Hell entities and breeds as required
 - Resolve material, texture, animation, skeleton, inventory, weapon, and sound dependencies
@@ -37,35 +37,39 @@ This repository should **not** contain copied Code:X assets. Code:X is a downstr
 
 ## Source strategy
 
-The source lineage has been corrected from direct metadata inspection:
+The source lineage has been corrected from direct metadata and archive inspection:
 
-- **Current WarFighter:** `E:\steam\steamapps\workshop\content\400750\CTA Warfighter Drop Folder`
-  - nested `2777685314/mod.info` identifies **WarFighter v2.10.04**
-  - current content is heavily packaged into Gates of Hell `.pak` archives
-- **Legacy WarFighter reference:** `E:\warfighter_v2_05`
+- **Complete working baseline:** `E:\warfighter_v2_05`
   - `mod.info` identifies **WarFighter v2.05**
-  - useful because much of the content is already unpacked for direct inspection
+  - 137,246 unpacked files
+  - includes the broad breed, sound, humanskin, entity, vehicle, weapon, texture, and configuration trees needed for dependency-complete asset work
+- **Current-version partial drop:** `E:\steam\steamapps\workshop\content\400750\CTA Warfighter Drop Folder`
+  - nested `2777685314/mod.info` identifies **WarFighter v2.10.04**
+  - the inspected `.pak` set contains 66,135 members and 64,893 unique normalized paths with zero archive-read failures
+  - however, this local drop is **not a complete v2.10.04 distribution**: the inspected package contains no breed `.set` tree, no sound tree, only part of the humanskin library, and omits entire legacy vehicle entity families such as USA, USMC, Germany, UAF, PLA, and IDF
+  - it does contain useful newer deltas, including French vehicle content, additional OPFOR entities, newer inventory/ammunition content, and thousands of current-only textures
 - **Not WarFighter:** `E:\steam\steamapps\workshop\content\400750\2950056378`
   - its `mod.info` identifies **Rifleman Mod**
   - it is excluded from WarFighter source precedence
 
-The current source policy is:
+The current source policy is therefore:
 
-- **v2.10.04 is the canonical current upstream source.**
-- **v2.05 is a legacy unpacked comparison/reference source.**
-- Do not compare raw visible file counts between them because v2.10.04 is heavily packed.
+- **v2.05 remains the canonical complete lab baseline until a complete v2.10.04 snapshot is acquired and verified.**
+- Treat the existing v2.10.04 drop as a **newer delta/reference source**, not as a complete replacement.
+- A v2.10.04 component may be selected when its dependency closure is complete and independently validated.
+- Do not infer deletion from absence in the partial v2.10.04 drop.
 - Do not perform a blind folder merge.
-- Every imported asset records the exact source revision, archive/member path, and any approved legacy fallback.
+- Every imported asset records the exact source revision, archive/member path or legacy path, and any mixed-source choices.
 
-See issue #3 for the source comparison and archive-inventory work.
+See issue #3 for the source comparison and completeness evidence.
 
 ## One-asset workflow
 
 Every WarFighter addition follows the same lifecycle:
 
 1. Select exactly one bounded asset or breed slice.
-2. Identify its full dependency closure in current v2.10.04 and its v2.05 legacy counterpart where applicable.
-3. Prefer the current v2.10.04 component unless a reviewed issue explicitly approves a legacy fallback.
+2. Identify its full dependency closure in the complete v2.05 baseline and any available v2.10.04 delta.
+3. Prefer a complete dependency closure over version number alone. Use v2.10.04 components where they are present and complete; otherwise retain the v2.05 component until a complete current snapshot is available.
 4. Copy only that approved slice into an isolated staging area.
 5. Adapt paths, materials, definitions, skeletons, inventories, and configuration for Gates of Hell.
 6. Create or repair the Gates of Hell entity and breed definitions required by the asset.
@@ -105,7 +109,7 @@ This WarFighter approval does not grant permission to copy or redistribute Code:
 - One bounded asset slice per implementation PR
 - No mass WarFighter dump into `main`
 - No copied Code:X assets in this repository
-- Current/legacy source choice must be explicit
+- Complete-baseline/current-delta source choice must be explicit
 - Every asset must have a dependency manifest
 - Every breed/entity must be tested in editor before downstream handoff
 - Native testing is required when editor inspection cannot prove behavior
