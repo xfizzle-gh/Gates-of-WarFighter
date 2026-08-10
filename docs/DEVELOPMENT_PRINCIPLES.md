@@ -1,59 +1,57 @@
 # Development Principles
 
-## 1. Standalone means standalone
+## 1. This repository is an asset lab
 
-A released Gates of WarFighter build must install and run without Code:X, West81, WarFighter, Gates of Code:X, or another content mod. Development tools may inspect approved WarFighter source material, but runtime files must not resolve assets through another Workshop installation.
+Gates of WarFighter exists to import, reconstruct, and validate WarFighter assets for Gates of Hell. Strategic campaign systems, nation rosters, research trees, and Code:X integration belong downstream in Gates of Code:4X.
 
-Standalone acceptance requires testing against a clean Gates of Hell installation with only the candidate build enabled.
+## 2. Code:X stays external
 
-## 2. Full WarFighter approval is established
+Do not copy Code:X assets into this repository. The downstream Code:4X project is a Code:X submod and may reference Code:X under that relationship. This lab should not blur that boundary.
 
-Yuri has approved use of the complete WarFighter mod and all content included with it for Gates of WarFighter. Models, textures, materials, animations, audio, scripts, configuration, maps, UI, branding, and supporting files do not require separate asset-category permission decisions.
+## 3. Full WarFighter approval is established
 
-Inventory and provenance remain mandatory so every imported asset can be traced, reproduced, credited, and validated technically.
+Yuri has approved use of the complete WarFighter mod and all included content. Inventory and provenance are technical and attribution requirements, not per-file permission gates.
 
-## 3. Port the complete content library, rebuild the product
+## 4. One asset at a time
 
-The project may reuse the approved WarFighter content library, including source configuration where technically useful, but Gates of WarFighter should be deliberately rebuilt as a standalone Gates of Hell product.
+Default implementation scope is one human breed, one weapon family, one vehicle family, or another tightly bounded dependency-complete slice. Do not migrate a whole faction merely because the source tree makes bulk copying easy.
 
-Factions, rosters, research, campaign behavior, AI integration, packaging, and strategic systems should be adapted or recreated for the new technical foundation rather than preserving hidden runtime dependencies on the original Workshop item.
+## 5. V1 baseline, V2 reconciliation
 
-## 4. Deterministic import over manual mutation
+V1 is the canonical breadth baseline. V2 is an update/delta source. Every imported component must record its chosen source revision. Never perform an unreviewed folder overlay between the two source trees.
 
-Repeatable conversions belong in tools. Generated output must identify its source inputs, tool version, configuration, and hashes. Generated files must not be hand-edited in ways that cannot be reproduced.
+## 6. Dependency closure before conversion
 
-Raw approved sources, conversion workspaces, generated intermediates, and release output should remain clearly separated.
+A model is not a usable asset by itself. Resolve textures, materials, skeletons, animations, sounds, inventories, weapons, ammunition, definitions, icons, and other required files before declaring a slice staged.
 
-## 5. Small, ordered pull requests
+## 7. Reconstruct Gates of Hell-native definitions
 
-Each pull request should deliver one bounded gate or vertical slice. Foundational contracts merge before content depends on them.
+WarFighter content may require new or corrected Gates of Hell entities, breeds, inventories, weapon mappings, materials, attachment definitions, or configuration. These should be explicit and reviewable rather than hidden ad hoc fixes.
 
-Pull requests remain draft until their implementation, focused tests, documentation, and acceptance evidence are complete. Review and testing apply to the exact head proposed for merge.
+## 8. Editor proof is mandatory
 
-## 6. One source of truth
+Every breed/entity slice must be opened and inspected in the Gates of Hell editor before lab acceptance. Visual loading, materials, attachments, animations, and editor spawnability are first-class acceptance criteria.
 
-Faction identities, unit identifiers, research relationships, asset mappings, and generated output should each have a canonical authority. Parallel handwritten copies invite drift and should be avoided.
+## 9. Native proof where behavior matters
 
-## 7. Validate semantics, not only file presence
+Use native Gates of Hell tests when editor inspection cannot prove movement, combat, firing, reloading, damage, vehicle interaction, sounds, effects, or other runtime behavior.
 
-A successful conversion is not proven by files existing. Validation should confirm that models load, materials resolve, animations bind, units spawn, faction ownership is correct, research unlocks the intended content, save/load works, and logs remain clean.
+## 10. Deterministic import over manual mystery
 
-## 8. Protect the strategic layer from content assumptions
+Repeatable conversions belong in tooling or documented recipes. Record exact source paths, hashes, transformations, outputs, and tool versions. Do not accept a result that cannot be reconstructed.
 
-The overmap should consume explicit faction and capability contracts rather than hardcoded knowledge of the source Workshop installation. This allows factions and assets to evolve without silently corrupting campaign state.
+## 11. Lab acceptance is not campaign acceptance
 
-## 9. Preserve a replacement path
+`LAB ACCEPTED` means the asset works as a Gates of Hell content slice. It does not decide faction ownership, research placement, balance, AI use, economy, or strategic availability. Those decisions belong to the downstream Code:4X integration PR.
 
-Imported assets may later require correction, optimization, or replacement. Stable identifiers and manifests should allow an asset to be replaced without rewriting unrelated strategic or roster data.
+## 12. Preserve replacement paths
 
-## 10. Evidence before expansion
+A later V2 revision, corrected model, improved texture, or better breed definition may supersede an accepted asset. Stable IDs and manifests must allow replacement without losing provenance.
 
-The project should prove one complete faction vertical slice before multiplying the content surface. The vertical slice must include standalone boot, roster, research, recruitment, tactical spawn, battle result return, save/load, and clean logs.
+## 13. No unreviewed binary flood
 
-## 11. No unreviewed binary flood
+Large binaries must be tied to an issue-authorized asset slice and manifest. Do not commit the entire WarFighter source installation or a full faction archive to `main` for convenience.
 
-Large assets require an approved storage and review strategy. Binary additions should be grouped by documented inventory slices, not committed as an unauditable archive dump.
+## 14. Exact-head evidence
 
-## 12. Honest status reporting
-
-Reports must distinguish completed work, generated output, tests actually executed, manual checks, assumptions, attribution gaps, and technical risks. A green script cannot substitute for native-game acceptance.
+Reports must distinguish static checks, conversion validation, editor checks, native tests, screenshots, logs, assumptions, and unresolved defects. Acceptance applies to the exact revision reviewed and tested.
